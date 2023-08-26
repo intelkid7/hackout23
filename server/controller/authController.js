@@ -8,27 +8,31 @@ import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 export const registerDoctorController = async (req, res) => {
     try {
         //validation
-        if(!req.body.role){
+        console.log(req.fields)
+        if(!req.fields.role){
             return res.send({ message: "Role is Required" });
         }
-        if(!req.body.name){
+        if(!req.fields.firstName){
             return res.send({ message: "Name is Required" });
         }
-        if(!req.body.hospital){
+        if(!req.fields.lastName){
+            return res.send({ message: "Name is Required" });
+        }
+        if(!req.fields.hospital){
             return res.send({ message: "Hospital name is Required" });
         }
-        if(!req.body.email){
+        if(!req.fields.email){
             return res.send({ message: "Email id is Required" });
         }
-        if(!req.body.password){
+        if(!req.fields.password){
             return res.send({ message: "Password is Required" });
         }
-        if(!req.body.gender){
+        if(!req.fields.gender){
             return res.send({ message: "Gender is Required" });
         }
 
         //checking if already exists
-        const existing_d = await doctorModel.findOne({email: req.body.email});
+        const existing_d = await doctorModel.findOne({email: req.fields.email});
 
         //exisiting doctor
         if (existing_d) {
@@ -39,16 +43,16 @@ export const registerDoctorController = async (req, res) => {
         }
 
         //hash password
-        const hashedPassword = await hashPassword(req.body.password);
+        const hashedPassword = await hashPassword(req.fields.password);
 
         //register doctor
         const doc = new doctorModel({
-            role: req.body.role,
-            name: req.body.name,
-            hospital: req.body.hospital,
-            email: req.body.email,
+            role: req.fields.role,
+            name: req.fields.firstName + " " + req.fields.lastName,
+            hospital: req.fields.hospital,
+            email: req.fields.email,
             password: hashedPassword,
-            gender: req.body.gender
+            gender: req.fields.gender
         });
 
         doc.save();

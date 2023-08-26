@@ -5,9 +5,10 @@ import Form from './components/form'
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Doctor_home from './components/Doctor_home';
-import Registration from './components/registration'; 
+// import Registration from './components/Registration'; 
 import toast, { Toaster } from 'react-hot-toast';
 import FindPatient from './components/FindPatient';
+import Registration from './components/registration';
 
 function App() {
 
