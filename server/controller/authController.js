@@ -4,6 +4,7 @@ import JWT from 'jsonwebtoken';
 import PatientModel from "../models/patientModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 import registerPatientModel from "../models/registerPatientModel.js";
+import symptomModel from "../models/symptomModel.js";
 
 //function for register doctor after checking validation
 export const registerDoctorController = async (req, res) => {
@@ -333,6 +334,35 @@ export const deleteAppointmentController = async (req, res) => {
         res.status(500).send({
             success: false,
             message: "Patient not found"
+        });
+    }
+}
+
+// search controller
+
+export const searchController = async (req, res) => {
+
+    try {
+        const { keyword } = req.params;
+    
+        const symptom = await symptomModel.find({
+          $or: [
+            { name: { $regex: keyword, $options: "i" } },
+            { description: { $regex: keyword, $options: "i" } },
+          ],
+        });
+
+        res.status(200).send({
+            success: true,
+            message: "Symptom found",
+            data: symptom
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in search",
+            error
         });
     }
 }
