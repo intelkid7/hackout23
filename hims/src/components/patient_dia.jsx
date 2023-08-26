@@ -41,10 +41,9 @@ export default function Patient_dia() {
                         <p id="pip">Drinking plenty of alcohol and smoking constantly without listening to anyone
                         The doctors have given up and can't do anything. His visits are just for hospital's financial benefit</p></h5>
                       </div>
-
                     </div>
                   </div>
-                  <div className="col-lg-6 bg-indigo text-white">
+                  <div id="pdiv2" className="col-lg-6">
                     <div className="p-5">
                       <div className="form-check d-flex justify-content-start mb-4 pb-3">
                         <input
