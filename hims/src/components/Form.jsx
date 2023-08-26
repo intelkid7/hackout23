@@ -54,7 +54,7 @@ export default function Form() {
       <div id='logdiv'>
         <div id='logform'>
           <div id='logimgdiv'>
-            <img src="logolight.png" id='logimg' />
+            <img src="logolight.png" id='loglog' />
             <h1 id='moto'>Empowering Healthcare</h1>
           </div>
           <form action="" id='logform2'>
