@@ -1,7 +1,6 @@
-# hackout23
+# Hackout23
 Repo for hackout2023 team Intelkids
 ##
-hello parv the goat coder
 
 Hackout 2023
 
