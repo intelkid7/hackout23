@@ -66,6 +66,29 @@ body {
   /* background-color: rgb(255, 255, 255); */
 }
 
+#pdiv2 {
+  background: #ff2626;
+  border-radius: 1rem;
+}
+
+#symps {
+  background: none;
+  border: none;
+  border-bottom: solid 1px white;
+  margin-bottom: 2rem;
+  text-align: right;
+  color: white;
+  outline: none;
+  font-weight: 600;
+}
+
+#psearch {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: right;
+}
+
 #moto {
   margin-top: 1rem;
   font-size: 1.3rem;
