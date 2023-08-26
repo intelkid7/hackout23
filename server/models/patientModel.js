@@ -51,4 +51,3 @@ const patientSchema = new mongoose.Schema({
 
 // Create the patient model
 export default mongoose.model('patient', patientSchema);
-
