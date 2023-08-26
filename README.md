@@ -1,4 +1,4 @@
-# Hackout23
+# Hackout23 DAIICT
 Repo for hackout2023 team Intelkids
 ##
 
