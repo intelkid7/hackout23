@@ -72,6 +72,32 @@ export default function Patient_dia() {
                       <div id="psearch">
                         <input placeholder="Search and add symptoms" type="text" name="search" id="symps" />
                       </div>
+                      <div className="w-100" id="addsymp">
+                        <button
+                          type="submit"
+                          id="pres1"
+                          className="btn btn-light btn-lg"
+                          data-mdb-ripple-color="dark"
+                        >
+                          Add Symptom
+                        </button>
+                      </div>
+                      <div id="symphead">Symptoms</div>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1"></textarea>
+                      <div className="mt-2"></div>
+                      <div className="mt-5"></div>
+                      <div id="psearch">
+                        <input placeholder="Search for Diseases" type="text" name="search" id="symps" />
+                      </div>
+                      <div id="symphead">Disease diagnosed</div>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="1" className="w-100 mt-1"></textarea>
+                      <div className="mt-5"></div>
+                      <div id="psearch">
+                        <input placeholder="Search for Medicines" type="text" name="search" id="symps" />
+                      </div>
+                      <div id="symphead">Prescription</div>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1"></textarea>
+                      <div className="mb-3"></div>
                       <div className="form-check d-flex justify-content-start mb-4 pb-3">
                         <input
                           className="form-check-input me-3"

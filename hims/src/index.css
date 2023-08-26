@@ -75,18 +75,44 @@ body {
   background: none;
   border: none;
   border-bottom: solid 1px white;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: white;
+  font-size: 1.3rem;
+  outline: none;
+  /* font-weight: 600; */
+}
+
+#addsymp {
+  background: none;
   margin-bottom: 2rem;
-  text-align: right;
+  text-align: left;
   color: white;
   outline: none;
   font-weight: 600;
+}
+
+#symphead {
+  color: white;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+#symptext {
+  background: none;
+  border: solid 1px white;
+  border-radius: 0.3rem;
+  color: white;
+  outline: none;
+  padding: 1rem;
+  resize: none;
 }
 
 #psearch {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: right;
+  justify-content: left;
 }
 
 #moto {
@@ -115,6 +141,13 @@ body {
   font-weight: 600;
 }
 
+#pres1 {
+  background: #ff2626;
+  color: #f9f9f9;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 #pi {
   color: #ff2626;
   font-family: 'Poppins', sans-serif;
@@ -135,6 +168,12 @@ body {
 }
 
 #pres:hover {
+  border-color: #ff2626;
+  background-color: #f9f9f9;
+  color: #ff2626;
+}
+
+#pres1:hover {
   border-color: #ff2626;
   background-color: #f9f9f9;
   color: #ff2626;
