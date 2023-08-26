@@ -13,6 +13,8 @@ export default function Patient_dia() {
 
   const [result, setResult] = useState([])
 
+  const [symptoms, setSymptoms] = useState([])
+
   const fetchSymptoms = async () => {
 
     const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
@@ -29,6 +31,12 @@ export default function Patient_dia() {
   useEffect(() => {
     fetchSymptoms()
   }, [keyword])
+
+  const handleAddSymptom = async () => {
+
+    setSymptoms([...symptoms, keyword])
+    // setKeyword("") 
+  }
 
   return (
     <section id="pdiv" className="h-100 h-custom gradient-custom-2">
@@ -77,7 +85,7 @@ export default function Patient_dia() {
                       <div id="psearch">
                         <input placeholder="Search and add symptoms" type="text" name="search" id="symps" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
                       </div>
-                      <div className="result-list d-flex flex-column align-items-end justify-content-end">
+                      <div className="result-list">
                         {result?.length > 0 && keyword !== "" ? 
                         <List
                           sx={{
@@ -109,12 +117,15 @@ export default function Patient_dia() {
                           id="pres1"
                           className="btn btn-light btn-lg"
                           data-mdb-ripple-color="dark"
+                          onClick={handleAddSymptom}
                         >
                           Add Symptom
                         </button>
                       </div>
                       <div id="symphead">Symptoms</div>
-                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1"></textarea>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1" value={symptoms.map((s) => {
+                        return `${s}, `
+                      })}></textarea>
                       <div className="mt-2"></div>
                       <div className="mt-5"></div>
                       <div id="psearch">
