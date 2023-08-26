@@ -21,9 +21,7 @@ export default function Form() {
             <label htmlFor="disabledSelect" className="form-label">
               Password
             </label>
-            <select id="disabledSelect" className="form-select">
-              <option>Disabled select</option>
-            </select>
+            <input type="password" id='pass' />
           </div>
           <div className="mb-3">
             <div className="form-check">

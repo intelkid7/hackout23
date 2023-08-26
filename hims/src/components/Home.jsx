@@ -1,11 +1,10 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 export default function Home() {
     return (
         <div>
-            <div id='homebody'>
-                <img src="logodark.png" alt="Logo" id='logo' />
-            </div>
+            <Navbar/>
         </div>
     )
 }

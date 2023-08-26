@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function registration() {
+export default function Registration() {
   return (
-    <div>registration</div>
+    <div>Registration</div>
   )
 }
