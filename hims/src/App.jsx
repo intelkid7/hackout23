@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 // import Navbar from './components/Navbar'
-import Form from './components/form'
+import Form from "./components/Form";
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Doctor_home from './components/Doctor_home';
