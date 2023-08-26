@@ -5,31 +5,22 @@ import {useNavigate} from 'react-router-dom'
 export default function Doctor_home() {
 
   const [patient, setPatient] = useState([]);
-
   const navigate = useNavigate();
 
   const getPatients = async () => {
-
-    // window.location.reload();
-    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/getRegisteredPatient`)
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/getRegisteredPatient`);
     console.log(res); 
     setPatient(res.data.data);
 
   }
 
   const handleDelete = async (id) => {
-
     const res = await axios.delete(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/deletePatient/${id}`)
     console.log(res); 
-
     setPatient(patient.filter((p) => p._id !== id));
-
-    // window.location.reload();
-    // getPatients();
   }
 
   useEffect(() => {
-    // window.location.reload();
     getPatients();
   }, []);
 
@@ -51,7 +42,7 @@ export default function Doctor_home() {
               <tr key={index}>
                 <td id='sno'>{index + 1}</td>
                 <td>{p.id.firstName + " " + p.id.lastName}</td>
-                <td><button onClick={() => navigate("/Patient")}>Give prescription</button></td>
+                <td><button onClick={() => navigate(`/Patient/${p._id}`)}>Give prescription</button></td>
                 <td><button onClick={() => handleDelete(p._id)}><i class="bi bi-trash-fill"></i></button></td>
               </tr>
             ))}

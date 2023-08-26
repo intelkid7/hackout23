@@ -26,7 +26,7 @@ router.get('/addPatient/:id', RegisterPatientController);
 router.get('/getRegisteredPatient', getRegisteredPatientController);
 
 // get single registered patient
-router.get('/getRegisteredPatient/:id', getSingleRegisteredPatientController);
+router.get('/getRegisteredPatientOne/:id', getSingleRegisteredPatientController);
 
 // delete appointment
 router.delete('/deletePatient/:id', deleteAppointmentController);
