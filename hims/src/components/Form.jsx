@@ -4,22 +4,22 @@ export default function Form() {
   return (
     <div>
       <form>
-        <fieldset disabled>
-          <legend>Disabled fieldset example</legend>
+        <fieldset >
+          <legend>DOCTOR LOGIN</legend>
           <div className="mb-3">
             <label htmlFor="disabledTextInput" className="form-label">
-              Disabled input
+              E-mail 
             </label>
             <input
               type="text"
               id="disabledTextInput"
               className="form-control"
-              placeholder="Disabled input"
+              placeholder="Email"
             />
           </div>
           <div className="mb-3">
             <label htmlFor="disabledSelect" className="form-label">
-              Disabled select menu
+              Password
             </label>
             <select id="disabledSelect" className="form-select">
               <option>Disabled select</option>
