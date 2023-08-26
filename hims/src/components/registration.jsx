@@ -13,7 +13,7 @@ export default function Registration() {
             <div className="row">
               <div className="col-md-6 mb-4">
                 <div className="form-outline">
-                  <label className="form-label"  htmlFor="firstName" style={{ marginLeft: 0 }}>First Name</label>
+                  <label className="form-label" htmlFor="firstName" style={{ marginLeft: 0 }}>First Name</label>
                   <input placeholder="Example: Aakash" type="text" id="reginput" className="form-control form-control-lg" fdprocessedid="kmarb3" />
                   <div className="form-notch"><div className="form-notch-leading" style={{ width: 9 }} /><div className="form-notch-middle" style={{ width: '70.4px' }} /><div className="form-notch-trailing" /></div></div>
               </div>
