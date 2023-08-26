@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 // import Navbar from './components/Navbar'
-import Form from './components/form'
+import Form from "./components/Form";
 import { Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Doctor_home from './components/Doctor_home';
@@ -10,7 +10,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import FindPatient from './components/FindPatient';
 import Patient_dia from './components/patient_dia';
 import Registration from './components/registration';
-
 
 function App() {
 
