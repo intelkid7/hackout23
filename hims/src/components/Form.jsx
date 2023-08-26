@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Form() {
   return (
-    <div>
+    <div className='d-flex justify-content-center align-items-center text-white vh-100'>
       <form>
-        <fieldset >
+        <fieldset>
           <legend>DOCTOR LOGIN</legend>
           <div className="mb-3">
             <label htmlFor="disabledTextInput" className="form-label">
