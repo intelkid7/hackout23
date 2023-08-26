@@ -15,8 +15,7 @@ Steps to run the website
 1. Open the folder in VS Code
 2. Open the terminal (Ctrl + Shift + `)
 3. Head to the hims folder
-4. > cd hackout23
-   > cd hims
+4. > cd hackout23 > cd hims
 5. run "npm run dev"
 6. click the link that comes in the terminal (https://localhost/5173)
 7. Route for Login: https://localhost/5173/Login
