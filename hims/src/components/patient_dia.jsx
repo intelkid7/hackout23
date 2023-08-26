@@ -16,7 +16,7 @@ export default function Patient_dia() {
                     <div className="p-5">
                       <h3
                         id="pi"
-                        className="fw-normal mb-5"
+                        className="mb-5"
                       >
                         Patient Infomation
                       </h3>
@@ -37,8 +37,9 @@ export default function Patient_dia() {
                         <p id="pip">9678963452</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Upcoming Appointments
                         <p id="pip">No Appointments</p></h5>
-                        <h5 id="pihead" className="col-md-6 py-4 pb-2">Medical History
-                        <p id="pip">John Lallu</p></h5>
+                        <h5 id="pihead" className="col-md-12 py-4 pb-2">Medical History
+                        <p id="pip">Drinking plenty of alcohol and smoking constantly without listening to anyone
+                        The doctors have given up and can't do anything. His visits are just for hospital's financial benefit</p></h5>
                       </div>
 
                     </div>
