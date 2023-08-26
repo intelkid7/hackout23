@@ -1,45 +1,69 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { useParams } from "react-router-dom";
 
 export default function Patient_dia() {
+
+  const params = useParams();
+
+  const [patientDetails, setPersonDetails] = useState();
+
+  const gettingPatientDetails = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/getRegisteredPatientOne/${params.id}`);
+      if(res){
+        console.log(res.data.data.id);
+        setPersonDetails(res.data.data.id);
+      }
+      else{
+        toast.error("Error in getting details of patients")
+      }
+    }
+    catch (error) {
+      console.log(error);
+      toast.error(`Somthing went wrong`);  
+    }
+  }
+
+  useEffect(() => {
+    gettingPatientDetails();
+  }, []);
+
   return (
     <section id="pdiv" className="h-100 h-custom gradient-custom-2">
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12">
-            <div
-              className="card card-registration card-registration-2"
-              style={{ borderRadius: 15 }}
-            >
+            <div className="card card-registration card-registration-2" style={{ borderRadius: 15 }}>
               <div className="card-body p-0">
                 <div className="row g-0">
                   <div className="col-lg-6">
                     <div className="p-5">
-                      <h3
-                        id="pi"
-                        className="mb-5"
-                      >
+                      <h3 id="pi" className="mb-5">
                         Patient Infomation
                       </h3>
                       <div className="row">
                         <h5 id="pihead" className="col-md-6 pt-4 pb-2">Name
-                          <p id="pip">John Lallu</p></h5>
+                          <p id="pip"> {patientDetails?.firstName + " " + patientDetails?.lastName} </p></h5>
                         <h5 id="pihead" className="col-md-6 pt-4 pb-2">Age
-                          <p id="pip">29</p></h5>
+                          <p id="pip"> {patientDetails?.age} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">ABHA Number
-                          <p id="pip">XX-XXXX-XXXX-XXXX</p></h5>
+                          <p id="pip"> {patientDetails?.abhaNumber} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">D.O.B.
-                          <p id="pip">14-09-2000</p></h5>
+                          <p id="pip"> {patientDetails?.dateOfBirth} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Gender
-                          <p id="pip">Male</p></h5>
+                          <p id="pip"> {patientDetails?.gender} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Address
-                          <p id="pip">John Lallu</p></h5>
+                          <p id="pip"> {patientDetails?.address.street + ", " + patientDetails?.address.city + ", " + patientDetails?.address.state + ", " + patientDetails?.address.zipCode} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Contact
-                          <p id="pip">9678963452</p></h5>
+                          <p id="pip"> {patientDetails?.contact.phoneNumber} </p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Upcoming Appointments
-                          <p id="pip">No Appointments</p></h5>
+                          <p id="pip"> None </p></h5>
                         <h5 id="pihead" className="col-md-12 py-4 pb-2">Medical History
-                          <p id="pip">Drinking plenty of alcohol and smoking constantly without listening to anyone
-                            The doctors have given up and can't do anything. His visits are just for hospital's financial benefit</p></h5>
+                          <p id="pip"> {patientDetails?.medicalHistory.allergies.map((items) => {return items + ", "}) + 
+                                        patientDetails?.medicalHistory.conditions.map((items) => {return items + ", "}) +
+                                        patientDetails?.medicalHistory.medications.map((items) => {return items})} </p></h5>
                       </div>
                     </div>
                   </div>
@@ -92,12 +116,7 @@ export default function Patient_dia() {
                           of your site.
                         </label>
                       </div>
-                      <button
-                        type="submit"
-                        id="pres"
-                        className="btn btn-light btn-lg"
-                        data-mdb-ripple-color="dark"
-                      >
+                      <button type="submit" id="pres" className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
                         Generate Prescription
                       </button>
                     </div>

@@ -14,6 +14,11 @@ const patientSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  age: {
+    type: Number, 
+    require: true,
+    default: 10 
+  },
   gender: {
     type: String,
     enum: ['Male', 'Female', 'Other'],
@@ -28,7 +33,7 @@ const patientSchema = new mongoose.Schema({
   contact: {
     phoneNumber: String,
     email: String,
-    abhaNumber: String  // Adding Abha number field
+    abhaNumber: String  
   },
   medicalHistory: {
     allergies: [String],
