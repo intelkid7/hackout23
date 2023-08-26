@@ -230,8 +230,7 @@ export const loginController = async (req, res) => {
         }); 
     }
 }
-// import patientModel from "../models/patientModel.js";
-import PatientModel from "../models/patientModel.js"
+
 import registerPatientModel from "../models/registerPatientModel.js";
 
 export const getPatientController = async (req, res) => {
