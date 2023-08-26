@@ -22,29 +22,32 @@ export default function Patient_dia() {
                       </h3>
                       <div className="row">
                         <h5 id="pihead" className="col-md-6 pt-4 pb-2">Name
-                        <p id="pip">John Lallu</p></h5>
+                          <p id="pip">John Lallu</p></h5>
                         <h5 id="pihead" className="col-md-6 pt-4 pb-2">Age
-                        <p id="pip">29</p></h5>
+                          <p id="pip">29</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">ABHA Number
-                        <p id="pip">XX-XXXX-XXXX-XXXX</p></h5>
+                          <p id="pip">XX-XXXX-XXXX-XXXX</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">D.O.B.
-                        <p id="pip">14-09-2000</p></h5>
+                          <p id="pip">14-09-2000</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Gender
-                        <p id="pip">Male</p></h5>
+                          <p id="pip">Male</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Address
-                        <p id="pip">John Lallu</p></h5>
+                          <p id="pip">John Lallu</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Contact
-                        <p id="pip">9678963452</p></h5>
+                          <p id="pip">9678963452</p></h5>
                         <h5 id="pihead" className="col-md-6 py-4 pb-2">Upcoming Appointments
-                        <p id="pip">No Appointments</p></h5>
+                          <p id="pip">No Appointments</p></h5>
                         <h5 id="pihead" className="col-md-12 py-4 pb-2">Medical History
-                        <p id="pip">Drinking plenty of alcohol and smoking constantly without listening to anyone
-                        The doctors have given up and can't do anything. His visits are just for hospital's financial benefit</p></h5>
+                          <p id="pip">Drinking plenty of alcohol and smoking constantly without listening to anyone
+                            The doctors have given up and can't do anything. His visits are just for hospital's financial benefit</p></h5>
                       </div>
                     </div>
                   </div>
                   <div id="pdiv2" className="col-lg-6">
                     <div className="p-5">
+                      <div id="psearch">
+                        <input placeholder="Search and add symptoms" type="text" name="search" id="symps" />
+                      </div>
                       <div className="form-check d-flex justify-content-start mb-4 pb-3">
                         <input
                           className="form-check-input me-3"
