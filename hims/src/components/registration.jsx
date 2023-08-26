@@ -28,9 +28,9 @@ export default function Registration() {
             <div className="row">
               <div className="col-md-6 mb-4 d-flex align-items-center">
                 <div className="form-outline datepicker w-100">
-                  <label htmlFor="birthdayDate" className="form-label" style={{ marginLeft: 0 }}>Birthday</label>
+                  {/* <label htmlFor="birthdayDate" className="form-label" style={{ marginLeft: 0 }}>Birthday</label> */}
 
-                  <input placeholder="dd-mm-yyyy" type="text" className="form-control form-control-lg" id="reginput" fdprocessedid="jdl4oe" />
+                  {/* <input placeholder="dd-mm-yyyy" type="text" className="form-control form-control-lg" id="reginput" fdprocessedid="jdl4oe" /> */}
                   <div className="form-notch"><div className="form-notch-leading" style={{ width: 9 }} /><div className="form-notch-middle" style={{ width: '55.2px' }} /><div className="form-notch-trailing" /></div></div>
               </div>
               <div className="col-md-6 mb-4">

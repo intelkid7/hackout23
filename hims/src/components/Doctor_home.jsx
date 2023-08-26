@@ -2,12 +2,12 @@ import React from 'react'
 
 export default function Doctor_home() {
   return (
-    <div>
+    <div id='tdiv'>
       <div classname="table-wrapper-scroll-y my-custom-scrollbar">
         <table classname="table table-bordered table-striped mb-0">
           <thead>
             <tr>
-              <th scope="col">No</th>
+              <th id='sno' scope="col">No</th>
               <th scope="col">Name</th>
             </tr>
           </thead>

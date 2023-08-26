@@ -76,6 +76,17 @@ body {
   width: 75%;
 }
 
+#tdiv {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 5rem;
+}
+
+#sno {
+  display: flex;
+  width: 5rem;
+}
+
 #logform2 {
   display: flex;
   flex-direction: column;
