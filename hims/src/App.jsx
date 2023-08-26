@@ -20,7 +20,7 @@ function App() {
       <Route path="/Login" element={<Form />} />
       <Route path="/Registration" element={<Registration />} />
       <Route path="/Doctor_home" element={<Doctor_home />} />
-      <Route path="/Patient" element={<Patient_dia />} />
+      <Route path="/Patient/:id" element={<Patient_dia />} />
       <Route path="/BookPatient" element={<FindPatient />} />
       <Route path='*' element={<h1>404 Not Found</h1>} />
     </Routes>
@@ -29,4 +29,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
