@@ -11,7 +11,6 @@ import FindPatient from './components/FindPatient';
 import Patient_dia from './components/patient_dia';
 import Registration from './components/registration';
 
-
 function App() {
 
   return (
