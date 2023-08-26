@@ -15,16 +15,14 @@ export default function Form() {
   //function for handleLogin button
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(role + " " + email + " " + password);
-
-
+    // console.log(role + " " + email + " " + password);
     try {
       if(password.length < 6){
         toast.error("Please enter minimum 6 character password!");
         navigate("/Login");
       } 
 
-      if(!email){
+      else if(!email){
         toast.error("Please enter email address!");
         navigate("/Login");
       }
