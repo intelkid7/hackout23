@@ -232,7 +232,6 @@ export const loginController = async (req, res) => {
 }
 
 export const getPatientController = async (req, res) => {
-
     const abhaNumber = req.params.id;
     console.log(abhaNumber);
     const patient = await PatientModel.find({abhaNumber});
