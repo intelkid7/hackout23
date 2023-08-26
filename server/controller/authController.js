@@ -1,6 +1,7 @@
 import adminModel from "../models/adminModel.js";
 import doctorModel from "../models/doctorModel.js";
 import JWT from 'jsonwebtoken';
+import PatientModel from "../models/patientModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 
 
@@ -236,24 +237,21 @@ import registerPatientModel from "../models/registerPatientModel.js";
 export const getPatientController = async (req, res) => {
 
     const abhaNumber = req.params.id;
-
-    console.log(abhaNumber)
-     
-    const patient = await PatientModel.find({abhaNumber})
-
-    console.log(patient)
+    console.log(abhaNumber);
+    const patient = await PatientModel.find({abhaNumber});
+    console.log(patient);
 
     if (patient) {
         res.status(200).send({
             success: true,
             message: "Patient found",
             data: patient
-        })
+        });
     } else {
         res.status(500).send({
             success: false,
             message: "Patient not found"
-        })
+        });
     }
 }
 

@@ -44,6 +44,8 @@ const patientSchema = new mongoose.Schema({
   ],
   abhaNumber:{
     type: String,
+    require: true,
+    unique: true
   }
 });
 

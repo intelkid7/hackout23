@@ -89,10 +89,13 @@ body {
 #pres {
   background: #ff2626;
   color: #f9f9f9;
+  font-weight: 600;
 }
 
 #pi {
   color: #ff2626;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 #pip {
@@ -116,6 +119,7 @@ body {
 
 #pdiv {
   font-family: 'Poppins', sans-serif;
+  /* font-weight: 600; */
 }
 
 #sno {
