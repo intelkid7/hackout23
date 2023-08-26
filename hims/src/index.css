@@ -1,8 +1,12 @@
 body {
+<<<<<<< HEAD
+  background: rgb(253, 253, 253);
+=======
   margin: 0;
   /* padding: 2rem;   */
   background: black;
   height: 100%;
+>>>>>>> 28d9f13329b95cb0fa2c92e2f5b913d88a94cf5e
 }
 
 #logo {
@@ -30,6 +34,26 @@ body {
   height: 100%;
 }
 
+<<<<<<< HEAD
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+.table-head {
+  background-color: linear-gradient(rgb(101, 199, 101), white);;
+  color: white;
+}
+
+tr:hover {
+  background-color: #F5F5F5;
+}
+=======
 #logdiv {
   display: flex;
   height: 100vh;
@@ -130,3 +154,4 @@ body {
   border: solid 1px #ff2626;
   color: #ff2626;
 }
+>>>>>>> 28d9f13329b95cb0fa2c92e2f5b913d88a94cf5e
