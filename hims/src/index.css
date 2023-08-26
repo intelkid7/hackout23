@@ -3,7 +3,18 @@ body {
 }
 
 #logo {
-  scale: 0.2;
+  display: flex;
+  scale: 1;
+}
+
+#navbar {
+  display: flex;
+  background: black;
+  height: 5rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  /* filter: blur(5px); */
+  box-shadow: 0 0 11px rgb(208, 0, 0);
 }
 
 #homebody {
