@@ -1,5 +1,9 @@
 body {
   background: #fdfdfd;
+  margin: 0;
+  /* padding: 2rem;   */
+  background: black;
+  height: 100%;
 }
 
 #logo {
@@ -27,26 +31,6 @@ body {
   height: 100%;
 }
 
-<<<<<<< HEAD
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: center;
-}
-
-.table-head {
-  background-color: linear-gradient(rgb(101, 199, 101), white);;
-  color: white;
-}
-
-tr:hover {
-  background-color: #F5F5F5;
-}
-=======
 #logdiv {
   display: flex;
   height: 100vh;
@@ -147,4 +131,48 @@ tr:hover {
   border: solid 1px #ff2626;
   color: #ff2626;
 }
->>>>>>> 28d9f13329b95cb0fa2c92e2f5b913d88a94cf5e
+
+#regdiv {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#rhead {
+  display: flex;
+  align-items: center;
+}
+
+#loglog {
+  width: 50%;
+}
+
+#reglog {
+  width: 20%;
+}
+
+#rehead {
+  width: 80%;
+  text-align: right;
+}
+
+#reginput {
+  border: none;
+  width: 90%;
+  border-radius: 0;
+  outline: none;
+  border-bottom: solid 1px black  ;
+}
+
+#rform {
+  border-radius: 0;
+  width: 60%;
+  background-color: white;
+}
+
+#femaleGender {
+  accent-color: red;
+}
