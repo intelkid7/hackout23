@@ -230,6 +230,9 @@ export const loginController = async (req, res) => {
         }); 
     }
 }
+// import patientModel from "../models/patientModel.js";
+import PatientModel from "../models/patientModel.js"
+import registerPatientModel from "../models/registerPatientModel.js";
 
 export const getPatientController = async (req, res) => {
     const abhaNumber = req.params.id;
@@ -249,4 +252,109 @@ export const getPatientController = async (req, res) => {
             message: "Patient not found"
         });
     }
+}
+
+// add registration controller
+
+export const RegisterPatientController = async (req, res) => {
+
+    const abhaNumber = req.params.id;
+
+    const patient = await PatientModel.findOne({abhaNumber})
+
+    console.log(patient)
+
+    if(!patient){
+        return res.status(500).send({
+            success: false,
+            message: "Patient not found"
+        })
+    }
+
+    const pat = new registerPatientModel({
+        id: patient._id
+    })
+
+    pat.save()
+
+    res.status(200).send({
+        success: true,
+        message: "Patient added to register list",
+        data: pat
+    })
+
+}
+
+// get Registered Patient Controller
+
+export const getRegisteredPatientController = async (req, res) => {
+
+    const patients = await registerPatientModel.find({}).populate('id')
+
+    console.log(patients)
+
+    if (patients) {
+        res.status(200).send({
+            success: true,
+            message: "Patient found",
+            data: patients
+        })
+    } else {
+        res.status(500).send({
+            success: false,
+            message: "Patient not found"
+        })
+    }
+}
+
+// get single registered patient controller
+
+export const getSingleRegisteredPatientController = async (req, res) => {
+
+    const id = req.params.id;
+
+    const patient = await registerPatientModel.findOne({_id: id}).populate('id')
+
+    console.log(patient)
+
+    if (patient) {
+        res.status(200).send({
+            success: true,
+            message: "Patient found",
+            data: patient
+        })
+    } else {
+        res.status(500).send({
+            success: false,
+            message: "Patient not found"
+        })
+    }
+}
+
+// delete appointment controller
+
+export const deleteAppointmentController = async (req, res) => {
+
+    const id = req.params.id;
+
+    const deletedPatient = await registerPatientModel.findByIdAndDelete({_id: id})
+
+    console.log(deletedPatient)
+
+    if (deletedPatient) {
+        res.status(200).send({
+            success: true,
+            message: "Patient deleted",
+            data: deletedPatient
+        })
+    }
+    else {
+        res.status(500).send({
+            success: false,
+            message: "Patient not found"
+        })
+    }
+    
+
+
 }

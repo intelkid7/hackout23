@@ -1,6 +1,6 @@
 import express from "express";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
-import { loginController, registerAdminController, registerDoctorController } from "../controller/authController.js";
+import { RegisterPatientController, deleteAppointmentController, getRegisteredPatientController, getSingleRegisteredPatientController, loginController, registerAdminController, registerDoctorController } from "../controller/authController.js";
 import { getPatientController } from "../controller/authController.js";
 import ExpressFormidable from "express-formidable";
 
@@ -17,6 +17,19 @@ router.post('/registerAdmin', registerAdminController);
 //Login route || Method post
 router.post('/login', loginController);
 
+router.get('/patient/:id', getPatientController);
+
+// add patient to register patient list
+router.get('/addPatient/:id', RegisterPatientController);
+
+// get registered patient list
+router.get('/getRegisteredPatient', getRegisteredPatientController);
+
+// get single registered patient
+router.get('/getRegisteredPatient/:id', getSingleRegisteredPatientController);
+
+// delete appointment
+router.delete('/deletePatient/:id', deleteAppointmentController);
 
 //export router
 export default router;
