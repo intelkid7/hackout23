@@ -1,6 +1,7 @@
 import express from "express";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import { loginController, registerAdminController, registerDoctorController } from "../controller/authController.js";
+import { getPatientController } from "../controller/authController.js";
 
 //route object
 const router = express.Router();
