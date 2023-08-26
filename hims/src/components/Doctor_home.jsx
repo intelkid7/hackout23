@@ -34,8 +34,9 @@ export default function Doctor_home() {
   }, []);
 
   return (
-    <div id='tdiv' className='text-light'>
-      <div classname="table-wrapper-scroll-y my-custom-scrollbar">
+    <div id='tdiv'>
+      <div id='menu'>Hello</div>
+      <div id='table' classname="table-wrapper-scroll-y my-custom-scrollbar">
         <table classname="table table-bordered table-striped mb-0">
           <thead>
             <tr>

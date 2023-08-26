@@ -101,7 +101,7 @@ export default function Registration() {
                 </div>
                 <div className="col-md-6 mb-4 pb-2">
                   <div className="form-outline">
-                    <label className="form-label" htmlFor="hospital" style={{ marginLeft: 0 }}>hospital</label>
+                    <label className="form-label" htmlFor="hospital" style={{ marginLeft: 0 }}>Hospital</label>
                     <input placeholder="Enter the name of hospital" value={hospital} type="email" id="reginput" className="form-control form-control-lg" fdprocessedid="6qu5b4" onChange={(e) => setHospital(e.target.value)}/>
                     <div className="form-notch"><div className="form-notch-leading" style={{ width: 9 }} /><div className="form-notch-middle" style={{ width: 40 }} /><div className="form-notch-trailing" /></div></div>
                 </div>
