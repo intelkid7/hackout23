@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 //mongoose schema of Doctor
-const doctorSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     role: {
         type: String,
         require: true
@@ -10,10 +10,6 @@ const doctorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
-    },
-    hospital: {
-        type: String,
-        require: true
     },
     email: {
         type: String,
@@ -23,12 +19,8 @@ const doctorSchema = new mongoose.Schema({
     password: {
         type: String,
         require: true
-    },
-    gender: {
-        type: String,
-        require: true
     }
 });
 
-//export doctorSchema using mongoose model method
-export default mongoose.model('doctors', doctorSchema);
+//export adminSchema using mongoose model method
+export default mongoose.model('admins', adminSchema);
