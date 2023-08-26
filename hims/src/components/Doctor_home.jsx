@@ -1,23 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React from 'react'
 
-const Table = () => {
+export default function Doctor_home() {
   return (
-    <>
-      <div className="container text-center">
-        <div className="row">
-          <table className="table table-bordered table-hover">
-            <thead className="table-head">Patients
-              <tr>
-                <th className="table-head">No</th>
-                <th className="table-head">Name</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
+    <div>
+      <div classname="table-wrapper-scroll-y my-custom-scrollbar">
+        <table classname="table table-bordered table-striped mb-0">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Jacob</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Larry</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default Table;

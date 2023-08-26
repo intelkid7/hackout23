@@ -1,12 +1,5 @@
 body {
-<<<<<<< HEAD
-  background: rgb(253, 253, 253);
-=======
-  margin: 0;
-  /* padding: 2rem;   */
-  background: black;
-  height: 100%;
->>>>>>> 28d9f13329b95cb0fa2c92e2f5b913d88a94cf5e
+  background: #fdfdfd;
 }
 
 #logo {
