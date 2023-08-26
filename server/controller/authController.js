@@ -344,6 +344,8 @@ export const searchController = async (req, res) => {
 
     try {
         const { keyword } = req.params;
+
+        
     
         const symptom = await symptomModel.find({
           $or: [

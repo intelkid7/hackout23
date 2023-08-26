@@ -1,4 +1,11 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+
 
 export default function Patient_dia() {
 
@@ -8,12 +15,20 @@ export default function Patient_dia() {
 
   const fetchSymptoms = async () => {
 
-    const res = axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
 
-    console.log(res.data)
-
-    setResult(res.data)
+    if (keyword === "") {
+      setResult([])
+    }
+    else {
+      console.log(res.data.data)
+      setResult(res.data.data)
+    }
   }
+
+  useEffect(() => {
+    fetchSymptoms()
+  }, [keyword])
 
   return (
     <section id="pdiv" className="h-100 h-custom gradient-custom-2">
@@ -60,7 +75,33 @@ export default function Patient_dia() {
                   <div id="pdiv2" className="col-lg-6">
                     <div className="p-5">
                       <div id="psearch">
-                        <input placeholder="Search and add symptoms" type="text" name="search" id="symps" />
+                        <input placeholder="Search and add symptoms" type="text" name="search" id="symps" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+                      </div>
+                      <div className="result-list d-flex flex-column align-items-end justify-content-end">
+                        {result?.length > 0 && keyword !== "" ? 
+                        <List
+                          sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 300,
+                            '& ul': { padding: 0 },
+                          }}
+                          subheader={<li />}
+                        >
+                          {result?.map((r) => (
+                            <li key={`${r._id}`}>
+                              <ul>
+                                  <ListItem onClick={() => setKeyword(r.name)} className="symtoms-class" >
+                                    <ListItemText primary={`${r.name}`} />
+                                  </ListItem>
+                              </ul>
+                            </li>
+                          ))}
+                        </List>
+                          : null}
                       </div>
                       <div className="form-check d-flex justify-content-start mb-4 pb-3">
                         <input
