@@ -78,13 +78,24 @@ body {
 
 #tdiv {
   display: flex;
-  font-size: 1.6rem;
-  padding: 5rem;
+  font-size: 1.5rem;
+  padding: 2rem;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
 }
 
 #sno {
   display: flex;
   width: 5rem;
+}
+
+#table {
+  border: solid 1px white;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 100%;
+  height: 100vh;
+  color: #f9f9f9;
 }
 
 #logform2 {
@@ -96,6 +107,17 @@ body {
   text-align: left;
   font-family: 'Poppins', sans-serif;
   font-size: 0.5rem;
+}
+
+#menu {
+  width: fit-content;
+  background-color: #0048e3;
+  padding: 5.4rem;
+  height: 100%;
+  margin-right: 2rem;
+  border-radius: 2rem;
+  color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
 }
 
 #seperator {
@@ -190,8 +212,4 @@ body {
   border-radius: 0;
   width: 60%;
   background-color: white;
-}
-
-#femaleGender {
-  accent-color: red;
 }
