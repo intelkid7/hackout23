@@ -15,7 +15,7 @@ export default function Doctor_home() {
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>It is Parv Patel</td>
             </tr>
             <tr>
               <th scope="row">2</th>
