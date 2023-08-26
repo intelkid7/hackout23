@@ -69,7 +69,8 @@ body {
 #moto {
   margin-top: 1rem;
   font-size: 1.3rem;
-  font-family: 'Poppins', sans-serif
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 #logimg {
@@ -82,6 +83,35 @@ body {
   padding: 2rem;
   text-align: left;
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+#pres {
+  background: #ff2626;
+  color: #f9f9f9;
+}
+
+#pi {
+  color: #ff2626;
+}
+
+#pip {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  margin-top: 0.2rem;
+}
+
+#pihead {
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  /* padding: 0; */
+}
+
+#pres:hover {
+  border-color: #ff2626;
+  background-color: #f9f9f9;
+  color: #ff2626;
 }
 
 #pdiv {
@@ -110,6 +140,7 @@ body {
   align-items: left;
   text-align: left;
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   font-size: 0.5rem;
 }
 
@@ -122,6 +153,7 @@ body {
   border-radius: 2rem;
   color: #f9f9f9;
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 #seperator {
@@ -131,12 +163,14 @@ body {
 #reghead {
   font-size: 1.5rem;
   text-align: left;
+  font-weight: 600;
 }
 
 #loginput {
   height: 2rem;
   font-size: 1rem;
   border: none;
+  font-weight: 200;
   background: #f9f9f9;
   border-bottom: solid 1px;
   outline: none;
@@ -166,6 +200,7 @@ body {
   height: fit-content;
   border-radius: 0.3rem;
   border: none;
+  font-weight: 600;
   color: #f9f9f9;
   background-color: #ff2626;
   padding: 0.5rem;
@@ -179,6 +214,7 @@ body {
 
 #regdiv {
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,7 +228,7 @@ body {
 }
 
 #loglog {
-  width: 50%;
+  width: 75%;
 }
 
 #reglog {
@@ -202,6 +238,7 @@ body {
 #rehead {
   width: 80%;
   text-align: right;
+  font-weight: 600;
 }
 
 #reginput {
