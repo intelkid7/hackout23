@@ -1,9 +1,45 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+
 import { useParams } from "react-router-dom";
 
+
 export default function Patient_dia() {
+
+  const [keyword, setKeyword] = useState("")
+
+  const [result, setResult] = useState([])
+
+  const [symptoms, setSymptoms] = useState([])
+
+  const fetchSymptoms = async () => {
+
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
+
+    if (keyword === "") {
+      setResult([])
+    }
+    else {
+      console.log(res.data.data)
+      setResult(res.data.data)
+    }
+  }
+
+  useEffect(() => {
+    fetchSymptoms()
+  }, [keyword])
+
+  const handleAddSymptom = async () => {
+
+    setSymptoms([...symptoms, keyword])
+    // setKeyword("") 
+  }
+
 
   const params = useParams();
 
@@ -70,7 +106,33 @@ export default function Patient_dia() {
                   <div id="pdiv2" className="col-lg-6">
                     <div className="p-5">
                       <div id="psearch">
-                        <input placeholder="Search and add symptoms" type="text" name="search" id="symps" />
+                        <input placeholder="Search and add symptoms" type="text" name="search" id="symps" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+                      </div>
+                      <div className="result-list">
+                        {result?.length > 0 && keyword !== "" ? 
+                        <List
+                          sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 300,
+                            '& ul': { padding: 0 },
+                          }}
+                          subheader={<li />}
+                        >
+                          {result?.map((r) => (
+                            <li key={`${r._id}`}>
+                              <ul>
+                                  <ListItem onClick={() => setKeyword(r.name)} className="symtoms-class" >
+                                    <ListItemText primary={`${r.name}`} />
+                                  </ListItem>
+                              </ul>
+                            </li>
+                          ))}
+                        </List>
+                          : null}
                       </div>
                       <div className="w-100" id="addsymp">
                         <button
@@ -78,12 +140,15 @@ export default function Patient_dia() {
                           id="pres1"
                           className="btn btn-light btn-lg"
                           data-mdb-ripple-color="dark"
+                          onClick={handleAddSymptom}
                         >
                           Add Symptom
                         </button>
                       </div>
                       <div id="symphead">Symptoms</div>
-                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1"></textarea>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1" value={symptoms.map((s) => {
+                        return `${s}, `
+                      })}></textarea>
                       <div className="mt-2"></div>
                       <div className="mt-5"></div>
                       <div id="psearch">
@@ -115,6 +180,11 @@ export default function Patient_dia() {
                           </a>{" "}
                           of your site.
                         </label>
+                        {/* <div className='result-list'>
+                          <div>A</div>
+                          <div>B</div>
+                          <div>A</div>
+                        </div> */}
                       </div>
                       <button type="submit" id="pres" className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
                         Generate Prescription
