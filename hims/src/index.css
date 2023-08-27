@@ -31,7 +31,7 @@ body {
 
 #homebody {
   color: #f9f9f9;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 #pass {
@@ -118,7 +118,7 @@ body {
 #moto {
   margin-top: 1rem;
   font-size: 1.3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
@@ -131,7 +131,7 @@ body {
   font-size: 1.5rem;
   padding: 2rem;
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
@@ -150,19 +150,19 @@ body {
 
 #pi {
   color: #ff2626;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
 #pip {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   margin-top: 0.2rem;
 }
 
 #pihead {
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   /* padding: 0; */
 }
@@ -180,7 +180,7 @@ body {
 }
 
 #pdiv {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* font-weight: 600; */
 }
 
@@ -205,7 +205,7 @@ body {
   justify-content: center;
   align-items: left;
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.5rem;
 }
@@ -218,7 +218,7 @@ body {
   margin-right: 2rem;
   border-radius: 2rem;
   color: #f9f9f9;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
@@ -279,7 +279,7 @@ body {
 }
 
 #regdiv {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -312,7 +312,7 @@ body {
   width: 90%;
   border-radius: 0;
   outline: none;
-  border-bottom: solid 1px black  ;
+  border-bottom: solid 1px black;
 }
 
 #rform {
@@ -320,3 +320,24 @@ body {
   width: 60%;
   background-color: white;
 }
+
+/* Search CSS */
+
+.results-list {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.symtoms-class{
+
+  cursor: pointer;
+}
+
+

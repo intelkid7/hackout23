@@ -19,7 +19,7 @@ export default function FindPatient() {
         if(res.data.success){
             toast.success(res.data.message);
             // window.location.reload();
-            navigate('/Doctor_home')
+            // navigate("/Doctor_home");
         }
         else{
             toast.error(res.data.message);
