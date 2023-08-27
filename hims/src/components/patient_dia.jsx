@@ -6,6 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 
+import { useParams } from "react-router-dom";
+
 
 export default function Patient_dia() {
 
