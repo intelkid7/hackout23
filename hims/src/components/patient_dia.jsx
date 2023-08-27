@@ -6,35 +6,28 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 
 export default function Patient_dia() {
+  const params = useParams();
+  const navigate = useNavigate();
 
-  const [keyword, setKeyword] = useState("")
-
-  const [result, setResult] = useState([])
-
-  const [symptoms, setSymptoms] = useState([])
-
-  const [disease, setDisease] = useState("")
-
-  const [diseases, setDiseases] = useState([])
-
-  const [disRes, setDisRes] = useState([])
-
-  const [med, SetMed] = useState("")
-
-  const [medicines, setMedicines] = useState([])
-
-  const [medRes, setMedRes] = useState([])
+  const [keyword, setKeyword] = useState("");
+  const [result, setResult] = useState([]);
+  const [symptoms, setSymptoms] = useState([]);
+  const [disease, setDisease] = useState("");
+  const [diseases, setDiseases] = useState([]);
+  const [disRes, setDisRes] = useState([]);
+  const [med, SetMed] = useState("");
+  const [medicines, setMedicines] = useState([]);
+  const [medRes, setMedRes] = useState([]);
 
   const fetchSymptoms = async () => {
-
-    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
-
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`);
     if (keyword === "") {
-      setResult([])
+      setResult([]);
     }
     else {
       console.log(res.data.data)
@@ -43,64 +36,57 @@ export default function Patient_dia() {
   }
 
   useEffect(() => {
-    fetchSymptoms()
+    fetchSymptoms();
   }, [keyword])
 
   const fetchDisease = async () => {
 
     const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/searchDisease/${disease}`)
-
     if (disease === "") {
-      setDiseases([])
+      setDiseases([]);
     }
     else {
-      console.log(res.data.data)
-      setDiseases(res.data.data)
+      console.log(res.data.data);
+      setDiseases(res.data.data);
     }
   }
 
   useEffect(() => {
-    fetchDisease()
+    fetchDisease();
   }, [disease])
 
   const fetchMedicine = async () => {
 
-    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/searchMedicine/${med}`)
-
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/searchMedicine/${med}`);
     if (med === "") {
-      setMedicines([])
+      setMedicines([]);
     }
     else {
-      console.log(res.data.data)
-      setMedicines(res.data.data)
+      console.log(res.data.data);
+      setMedicines(res.data.data);
     }
   }
 
   useEffect(() => {
-    fetchMedicine()
+    fetchMedicine();
   }, [med])
 
   const handleAddSymptom = async () => {
-
-    setSymptoms([...symptoms, keyword])
-    // setKeyword("") 
+    setSymptoms([...symptoms, keyword]);
   }
 
   const handleAddDisease = async () => {
-
-    setDisRes([...disRes, disease])
+    setDisRes([...disRes, disease]);
     // setKeyword("")
   }
 
   const handleAddMedicine = async () => {
-
-    setMedRes([...medRes, med])
+    setMedRes([...medRes, med]);
     // setKeyword("")
   }
 
 
-  const params = useParams();
-
+  // const params = useParams();
   const [patientDetails, setPersonDetails] = useState();
 
   const gettingPatientDetails = async () => {
@@ -123,6 +109,25 @@ export default function Patient_dia() {
   useEffect(() => {
     gettingPatientDetails();
   }, []);
+
+  const handleGeneratePrescription = async (e) => {
+    try {
+      e.preventDefault();
+      const res = await axios.post(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/sendMail`, {medRes, patientDetails});
+
+      if(res){
+        navigate('/Doctor_home');
+        toast.success()
+      }
+      else{
+        
+      }
+    } 
+    catch (error) {
+      console.log(error);
+      toast.error(`Somthing went wrong to send prescription of medicine to nearest medicine shop`);
+    }
+  }
 
   return (
     <section id="pdiv" className="h-100 h-custom gradient-custom-2">
@@ -322,7 +327,7 @@ export default function Patient_dia() {
                           <div>A</div>
                         </div> */}
                       </div>
-                      <button type="submit" id="pres" className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
+                      <button type="submit" id="pres" onClick={handleGeneratePrescription} className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
                         Generate Prescription
                       </button>
                     </div>

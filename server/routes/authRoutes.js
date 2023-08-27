@@ -3,6 +3,7 @@ import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import { RegisterPatientController, deleteAppointmentController, getRegisteredPatientController, getSingleRegisteredPatientController, loginController, registerAdminController, registerDoctorController, searchController, searchControllerDisease, searchControllerMedicine } from "../controller/authController.js";
 import { getPatientController } from "../controller/authController.js";
 import ExpressFormidable from "express-formidable";
+import { sendMail } from "../controller/authController.js";
 
 //route object
 const router = express.Router();
@@ -33,6 +34,9 @@ router.delete('/deletePatient/:id', deleteAppointmentController);
 
 //search symptom
 router.get('/search/:keyword', searchController);
+
+//send Mail using SMTP server
+router.post('/sendMail', sendMail);
 
 //search disease
 router.get('/searchDisease/:keyword', searchControllerDisease);

@@ -5,6 +5,7 @@ import PatientModel from "../models/patientModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 import registerPatientModel from "../models/registerPatientModel.js";
 import symptomModel from "../models/symptomModel.js";
+import { transporter } from './mailSender.js';
 import diseaseModel from "../models/diseaseModel.js";
 import MedicineModel from "../models/MedicineModel.js";
 
@@ -217,7 +218,7 @@ export const loginController = async (req, res) => {
 
             res.status(200).send({
                 success: true,
-                message: "Login Successfully in Doctor Portal",
+                message: "Login Successfully in Admin Portal",
                 admin1,
                 token
             });
@@ -341,9 +342,7 @@ export const deleteAppointmentController = async (req, res) => {
 }
 
 // search controller
-
 export const searchController = async (req, res) => {
-
     try {
         const { keyword } = req.params;
 
@@ -367,6 +366,58 @@ export const searchController = async (req, res) => {
             success: false,
             message: "Error in search",
             error
+        });
+    }
+}
+
+//send mail of prescription to nearest medicine shop
+export const sendMail = async (req, res) => {
+    try {
+        if(!req.body.medRes){
+            return res.status(401).send({
+                success: false,
+                message: "Can't getting value of medicine from frontend"
+            });
+        }
+
+        else if(!req.body.patientDetails){
+            return res.status(401).send({
+                success: false,
+                message: "Can't getting value of patientDetails from frontend"
+            });
+        }
+
+        else{
+            console.log(req.body.medRes);
+            console.log(req.body.patientDetails);
+            // Define the email options
+            const mailOptions = {
+                from: 'unims2407@gmail.com',
+                to: `sankalp.p@ahduni.edu.in`,
+                subject: `Medicine details of Patient ${req.body.patientDetails.firstName + " " + req.body.patientDetails.lastName}`,
+                text: `Here is medicine details below of ${req.body.patientDetails.firstName + " " + req.body.patientDetails.lastName} \n Please keep the medicine be ready \n Medicine: \n ${req.body.medRes.map((items) => items + `\n`) }`
+            };
+
+            // Send the email
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+
+            return res.status(200).send({
+                success: true,
+                message: `Informed the pharmacy` 
+            });
+        }
+    } 
+    catch (error) {
+        console.log("Error: " + error);
+        return res.status(401).send({
+            success: false,
+            message: "Error in sending mail using SMTP server"
         });
     }
 }
