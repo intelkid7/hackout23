@@ -12,7 +12,9 @@ export default function Navbar() {
           <li>Home</li>
           <li>Register Patient</li>
           <li>Login</li>
-          <li>Register</li>
+          <li>Register
+            
+          </li>
 
         </div>
 

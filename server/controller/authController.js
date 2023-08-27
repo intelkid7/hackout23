@@ -5,6 +5,8 @@ import PatientModel from "../models/patientModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 import registerPatientModel from "../models/registerPatientModel.js";
 import symptomModel from "../models/symptomModel.js";
+import diseaseModel from "../models/diseaseModel.js";
+import MedicineModel from "../models/MedicineModel.js";
 
 //function for register doctor after checking validation
 export const registerDoctorController = async (req, res) => {
@@ -345,7 +347,7 @@ export const searchController = async (req, res) => {
     try {
         const { keyword } = req.params;
 
-        
+
     
         const symptom = await symptomModel.find({
           $or: [
@@ -358,6 +360,58 @@ export const searchController = async (req, res) => {
             success: true,
             message: "Symptom found",
             data: symptom
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in search",
+            error
+        });
+    }
+}
+
+// search disease controller
+
+export const searchControllerDisease = async (req, res) => {
+
+    try {
+        const { keyword } = req.params;
+
+        const dis = await diseaseModel.find(
+            { name: { $regex: keyword, $options: "i" } }
+        );
+
+        res.status(200).send({
+            success: true,
+            message: "Symptom found",
+            data: dis
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in search",
+            error
+        });
+    }
+}
+
+// search disease controller
+
+export const searchControllerMedicine = async (req, res) => {
+
+    try {
+        const { keyword } = req.params;
+
+        const med = await MedicineModel.find(
+            { name: { $regex: keyword, $options: "i" } }
+        );
+
+        res.status(200).send({
+            success: true,
+            message: "Symptom found",
+            data: med
         });
     }
     catch (error) {

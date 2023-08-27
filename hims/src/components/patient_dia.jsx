@@ -17,6 +17,18 @@ export default function Patient_dia() {
 
   const [symptoms, setSymptoms] = useState([])
 
+  const [disease, setDisease] = useState("")
+
+  const [diseases, setDiseases] = useState([])
+
+  const [disRes, setDisRes] = useState([])
+
+  const [med, SetMed] = useState("")
+
+  const [medicines, setMedicines] = useState([])
+
+  const [medRes, setMedRes] = useState([])
+
   const fetchSymptoms = async () => {
 
     const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
@@ -34,10 +46,56 @@ export default function Patient_dia() {
     fetchSymptoms()
   }, [keyword])
 
+  const fetchDisease = async () => {
+
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/searchDisease/${disease}`)
+
+    if (disease === "") {
+      setDiseases([])
+    }
+    else {
+      console.log(res.data.data)
+      setDiseases(res.data.data)
+    }
+  }
+
+  useEffect(() => {
+    fetchDisease()
+  }, [disease])
+
+  const fetchMedicine = async () => {
+
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/searchMedicine/${med}`)
+
+    if (med === "") {
+      setMedicines([])
+    }
+    else {
+      console.log(res.data.data)
+      setMedicines(res.data.data)
+    }
+  }
+
+  useEffect(() => {
+    fetchMedicine()
+  }, [med])
+
   const handleAddSymptom = async () => {
 
     setSymptoms([...symptoms, keyword])
     // setKeyword("") 
+  }
+
+  const handleAddDisease = async () => {
+
+    setDisRes([...disRes, disease])
+    // setKeyword("")
+  }
+
+  const handleAddMedicine = async () => {
+
+    setMedRes([...medRes, med])
+    // setKeyword("")
   }
 
 
@@ -152,16 +210,94 @@ export default function Patient_dia() {
                       <div className="mt-2"></div>
                       <div className="mt-5"></div>
                       <div id="psearch">
-                        <input placeholder="Search for Diseases" type="text" name="search" id="symps" />
+                        <input placeholder="Search for Diseases" type="text" name="search" id="symps" value={disease} onChange={(e) => setDisease(e.target.value)}/>
+                      </div>
+                      <div className="result-list">
+                        {diseases?.length > 0 && disease !== "" ? 
+                        <List
+                          sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 300,
+                            '& ul': { padding: 0 },
+                          }}
+                          subheader={<li />}
+                        >
+                          {diseases?.map((r) => (
+                            <li key={`${r._id}`}>
+                              <ul>
+                                  <ListItem onClick={() => setDisease(r.name)} className="symtoms-class" >
+                                    <ListItemText primary={`${r.name}`} />
+                                  </ListItem>
+                              </ul>
+                            </li>
+                          ))}
+                        </List>
+                          : null}
+                      </div>
+                      <div className="w-100" id="addsymp">
+                        <button
+                          type="submit"
+                          id="pres1"
+                          className="btn btn-light btn-lg"
+                          data-mdb-ripple-color="dark"
+                          onClick={handleAddDisease}
+                        >
+                          Add Disease
+                        </button>
                       </div>
                       <div id="symphead">Disease diagnosed</div>
-                      <textarea name="symptoms" id="symptext" cols="30" rows="1" className="w-100 mt-1"></textarea>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="1" className="w-100 mt-1" value={disRes.map((s) => {
+                        return `${s}, `
+                      })}></textarea>
                       <div className="mt-5"></div>
                       <div id="psearch">
-                        <input placeholder="Search for Medicines" type="text" name="search" id="symps" />
+                        <input placeholder="Search for Medicines" type="text" name="search" id="symps" value={med} onChange={(e) => SetMed(e.target.value)}/>
+                      </div>
+                      <div className="result-list">
+                        {medicines?.length > 0 && medicines !== "" ? 
+                        <List
+                          sx={{
+                            width: '100%',
+                            maxWidth: 360,
+                            bgcolor: 'background.paper',
+                            position: 'relative',
+                            overflow: 'auto',
+                            maxHeight: 300,
+                            '& ul': { padding: 0 },
+                          }}
+                          subheader={<li />}
+                        >
+                          {medicines?.map((r) => (
+                            <li key={`${r._id}`}>
+                              <ul>
+                                  <ListItem onClick={() => SetMed(r.name)} className="symtoms-class" >
+                                    <ListItemText primary={`${r.name}`} />
+                                  </ListItem>
+                              </ul>
+                            </li>
+                          ))}
+                        </List>
+                          : null}
+                      </div>
+                      <div className="w-100" id="addsymp">
+                        <button
+                          type="submit"
+                          id="pres1"
+                          className="btn btn-light btn-lg"
+                          data-mdb-ripple-color="dark"
+                          onClick={handleAddMedicine}
+                        >
+                          Add Medicine
+                        </button>
                       </div>
                       <div id="symphead">Prescription</div>
-                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1"></textarea>
+                      <textarea name="symptoms" id="symptext" cols="30" rows="5" className="w-100 mt-1" value={medRes.map((s) => {
+                        return `${s}, `
+                      })}></textarea>
                       <div className="mb-3"></div>
                       <div className="form-check d-flex justify-content-start mb-4 pb-3">
                         <input
