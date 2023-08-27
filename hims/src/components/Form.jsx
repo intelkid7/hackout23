@@ -33,8 +33,17 @@ export default function Form() {
         const res = await axios.post(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/login`, {role, email, password});
 
         if (res.data.success) {
-          toast.success(res.data.message);
-          navigate('/Doctor_home');
+          if(role === "doctor"){
+            toast.success(res.data.message);
+            navigate('/Doctor_home');
+          }
+          else if(role === "admin"){
+            toast.success(res.data.message);
+            navigate('/Registration');
+          }
+          else{
+            navigate('/*');
+          }
         }
         else {
           toast.error(res.data.message);

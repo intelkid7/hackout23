@@ -6,6 +6,8 @@ import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 import registerPatientModel from "../models/registerPatientModel.js";
 import symptomModel from "../models/symptomModel.js";
 import { transporter } from './mailSender.js';
+import diseaseModel from "../models/diseaseModel.js";
+import MedicineModel from "../models/MedicineModel.js";
 
 //function for register doctor after checking validation
 export const registerDoctorController = async (req, res) => {
@@ -216,7 +218,7 @@ export const loginController = async (req, res) => {
 
             res.status(200).send({
                 success: true,
-                message: "Login Successfully in Doctor Portal",
+                message: "Login Successfully in Admin Portal",
                 admin1,
                 token
             });
@@ -343,6 +345,9 @@ export const deleteAppointmentController = async (req, res) => {
 export const searchController = async (req, res) => {
     try {
         const { keyword } = req.params;
+
+
+    
         const symptom = await symptomModel.find({
           $or: [
             { name: { $regex: keyword, $options: "i" } },
@@ -368,7 +373,7 @@ export const searchController = async (req, res) => {
 //send mail of prescription to nearest medicine shop
 export const sendMail = async (req, res) => {
     try {
-        if(!req.body.medicine){
+        if(!req.body.medRes){
             return res.status(401).send({
                 success: false,
                 message: "Can't getting value of medicine from frontend"
@@ -383,12 +388,14 @@ export const sendMail = async (req, res) => {
         }
 
         else{
+            console.log(req.body.medRes);
+            console.log(req.body.patientDetails);
             // Define the email options
             const mailOptions = {
                 from: 'unims2407@gmail.com',
-                to: 'krish.p1@ahduni.edu.in',
-                subject: `Medicine of Patient`,
-                text: `DOLO`
+                to: `sankalp.p@ahduni.edu.in`,
+                subject: `Medicine details of Patient ${req.body.patientDetails.firstName + " " + req.body.patientDetails.lastName}`,
+                text: `Here is medicine details below of ${req.body.patientDetails.firstName + " " + req.body.patientDetails.lastName} \n Please keep the medicine be ready \n Medicine: \n ${req.body.medRes.map((items) => items + `\n`) }`
             };
 
             // Send the email
@@ -399,6 +406,11 @@ export const sendMail = async (req, res) => {
                     console.log('Email sent: ' + info.response);
                 }
             });
+
+            return res.status(200).send({
+                success: true,
+                message: `Informed the pharmacy` 
+            });
         }
     } 
     catch (error) {
@@ -406,6 +418,58 @@ export const sendMail = async (req, res) => {
         return res.status(401).send({
             success: false,
             message: "Error in sending mail using SMTP server"
+        });
+    }
+}
+
+// search disease controller
+
+export const searchControllerDisease = async (req, res) => {
+
+    try {
+        const { keyword } = req.params;
+
+        const dis = await diseaseModel.find(
+            { name: { $regex: keyword, $options: "i" } }
+        );
+
+        res.status(200).send({
+            success: true,
+            message: "Symptom found",
+            data: dis
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in search",
+            error
+        });
+    }
+}
+
+// search disease controller
+
+export const searchControllerMedicine = async (req, res) => {
+
+    try {
+        const { keyword } = req.params;
+
+        const med = await MedicineModel.find(
+            { name: { $regex: keyword, $options: "i" } }
+        );
+
+        res.status(200).send({
+            success: true,
+            message: "Symptom found",
+            data: med
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Error in search",
+            error
         });
     }
 }
