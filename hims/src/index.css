@@ -202,11 +202,30 @@ body {
 
 #tdiv {
   display: flex;
-  font-size: 1.5rem;
-  padding: 2rem;
+  font-size: 1rem;
+  border-radius: 0.4rem;
   text-align: left;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  background: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  width: 80%;
+  color: #ff2626;
+}
+
+#thead {
+  display: flex;
+  padding: 1rem;
+}
+
+#trow {
+  display: flex;
+  padding: 1rem 1rem;
+}
+
+#ptable {
+  display: flex;
+  flex-direction: column;
 }
 
 #pres {
