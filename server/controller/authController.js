@@ -5,6 +5,7 @@ import PatientModel from "../models/patientModel.js";
 import { comparePassword, hashPassword } from './../helpers/authHelper.js';
 import registerPatientModel from "../models/registerPatientModel.js";
 import symptomModel from "../models/symptomModel.js";
+import { transporter } from './mailSender.js';
 
 //function for register doctor after checking validation
 export const registerDoctorController = async (req, res) => {
@@ -339,14 +340,9 @@ export const deleteAppointmentController = async (req, res) => {
 }
 
 // search controller
-
 export const searchController = async (req, res) => {
-
     try {
         const { keyword } = req.params;
-
-        
-    
         const symptom = await symptomModel.find({
           $or: [
             { name: { $regex: keyword, $options: "i" } },
@@ -365,6 +361,51 @@ export const searchController = async (req, res) => {
             success: false,
             message: "Error in search",
             error
+        });
+    }
+}
+
+//send mail of prescription to nearest medicine shop
+export const sendMail = async (req, res) => {
+    try {
+        if(!req.body.medicine){
+            return res.status(401).send({
+                success: false,
+                message: "Can't getting value of medicine from frontend"
+            });
+        }
+
+        else if(!req.body.patientDetails){
+            return res.status(401).send({
+                success: false,
+                message: "Can't getting value of patientDetails from frontend"
+            });
+        }
+
+        else{
+            // Define the email options
+            const mailOptions = {
+                from: 'unims2407@gmail.com',
+                to: 'krish.p1@ahduni.edu.in',
+                subject: `Medicine of Patient`,
+                text: `DOLO`
+            };
+
+            // Send the email
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        }
+    } 
+    catch (error) {
+        console.log("Error: " + error);
+        return res.status(401).send({
+            success: false,
+            message: "Error in sending mail using SMTP server"
         });
     }
 }

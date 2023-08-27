@@ -1,6 +1,6 @@
 import express from "express";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
-import { RegisterPatientController, deleteAppointmentController, getRegisteredPatientController, getSingleRegisteredPatientController, loginController, registerAdminController, registerDoctorController, searchController } from "../controller/authController.js";
+import { RegisterPatientController, deleteAppointmentController, getRegisteredPatientController, getSingleRegisteredPatientController, loginController, registerAdminController, registerDoctorController, searchController, sendMail } from "../controller/authController.js";
 import { getPatientController } from "../controller/authController.js";
 import ExpressFormidable from "express-formidable";
 
@@ -33,6 +33,9 @@ router.delete('/deletePatient/:id', deleteAppointmentController);
 
 //search symptom
 router.get('/search/:keyword', searchController);
+
+//send Mail using SMTP server
+router.post('/sendMail', sendMail);
 
 //export router
 export default router;

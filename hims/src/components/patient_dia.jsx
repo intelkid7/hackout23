@@ -10,40 +10,32 @@ import { useParams } from "react-router-dom";
 
 
 export default function Patient_dia() {
+  const params = useParams();
 
-  const [keyword, setKeyword] = useState("")
-
-  const [result, setResult] = useState([])
-
-  const [symptoms, setSymptoms] = useState([])
+  const [keyword, setKeyword] = useState("");
+  const [result, setResult] = useState([]);
+  const [symptoms, setSymptoms] = useState([]);
+  const [medicine, setMedicine] = useState([]);
+  const [patientDetails, setPersonDetails] = useState();
 
   const fetchSymptoms = async () => {
-
-    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`)
-
+    const res = await axios.get(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/search/${keyword}`);
     if (keyword === "") {
-      setResult([])
+      setResult([]);
     }
     else {
-      console.log(res.data.data)
-      setResult(res.data.data)
+      console.log(res.data.data);
+      setResult(res.data.data);
     }
   }
 
   useEffect(() => {
-    fetchSymptoms()
+    fetchSymptoms();
   }, [keyword])
 
   const handleAddSymptom = async () => {
-
-    setSymptoms([...symptoms, keyword])
-    // setKeyword("") 
+    setSymptoms([...symptoms, keyword]);
   }
-
-
-  const params = useParams();
-
-  const [patientDetails, setPersonDetails] = useState();
 
   const gettingPatientDetails = async () => {
     try {
@@ -65,6 +57,12 @@ export default function Patient_dia() {
   useEffect(() => {
     gettingPatientDetails();
   }, []);
+
+  const handleGeneratePrescription = async (e) => {
+    e.preventDefault();
+
+    const res = await axios.post(`${import.meta.env.VITE_REACT_API_APP_PORT}/api/v1/auth/sendMail`, {medicine, patientDetails});
+  }
 
   return (
     <section id="pdiv" className="h-100 h-custom gradient-custom-2">
@@ -186,7 +184,7 @@ export default function Patient_dia() {
                           <div>A</div>
                         </div> */}
                       </div>
-                      <button type="submit" id="pres" className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
+                      <button type="submit" id="pres" onClick={handleGeneratePrescription} className="btn btn-light btn-lg" data-mdb-ripple-color="dark">
                         Generate Prescription
                       </button>
                     </div>
